@@ -16,7 +16,7 @@ func NewPlayer(xpos float64, ypos float64) *Player {
 }
 
 const playerWidth = 5
-const playerLength = 50
+const playerLength = conf.PLAYERSIZE
 
 var playerPixels []scene.Pixel
 
