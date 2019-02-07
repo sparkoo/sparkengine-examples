@@ -1,6 +1,9 @@
 package objects
 
-import "github.com/sparkoo/sparkengine/scene"
+import (
+	"github.com/sparkoo/pong/conf"
+	"github.com/sparkoo/sparkengine/scene"
+)
 
 type Ball struct {
 	xpos float64
@@ -48,15 +51,15 @@ func (b *Ball) GetPixels() []scene.Pixel {
 	return ballPixels
 }
 
-func (b *Ball) Move(ticks int, sWidth int, sHeight int) {
+func (b *Ball) Move(ticks int) {
 	for ti := 0; ti < ticks; ti++ {
 		xPot := int(b.xpos + b.xvel)
-		if xPot < 0 || xPot+b.GetXsize() >= sWidth {
+		if xPot < 0 || xPot+b.GetXsize() >= conf.SWIDTH {
 			b.xvel *= -1
 		}
 
 		yPot := int(b.ypos + b.yvel)
-		if yPot < 0 || yPot+b.GetYsize() >= sHeight {
+		if yPot < 0 || yPot+b.GetYsize() >= conf.SHEIGHT {
 			b.yvel *= -1
 		}
 

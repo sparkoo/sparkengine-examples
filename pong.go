@@ -12,6 +12,7 @@ import (
 var (
 	player1 = objects.NewPlayer(conf.SWIDTH*.05, conf.SHEIGHT*.5)
 	player2 = objects.NewPlayer(conf.SWIDTH*.95, conf.SHEIGHT*.5)
+	ball    = objects.NewBall(conf.SWIDTH*.5, conf.SHEIGHT*.5, 1, 1)
 )
 
 func main() {
@@ -20,6 +21,7 @@ func main() {
 	s := scene.NewScene(tick)
 	s.AddObject(player1)
 	s.AddObject(player2)
+	s.AddObject(ball)
 
 	s.AddEventListener(sdl.MOUSEMOTION, player1.PlayerMoveEvent)
 
@@ -28,4 +30,5 @@ func main() {
 
 func tick() {
 	player2.Move(rand.Int31n(11) - 5)
+	ball.Move(1)
 }
