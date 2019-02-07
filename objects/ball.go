@@ -16,15 +16,15 @@ func NewBall(xpos float64, ypos float64, xvel float64, yvel float64) *Ball {
 	return &Ball{xpos, ypos, xvel, yvel}
 }
 
-const size = 10
+const size = 5
 
 var ballPixels []scene.Pixel
 
 func init() {
 	ballPixels = make([]scene.Pixel, size*size)
 	c := 0
-	for i := 0; i < 10; i++ {
-		for j := 0; j < 10; j++ {
+	for i := 0; i < size; i++ {
+		for j := 0; j < size; j++ {
 			ballPixels[c] = scene.NewPixel(i, j, [4]byte{127, 127, 127, 127})
 			c++
 		}
