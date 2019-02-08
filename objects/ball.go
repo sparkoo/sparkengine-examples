@@ -1,7 +1,6 @@
 package objects
 
 import (
-	"github.com/sparkoo/pong/conf"
 	"github.com/sparkoo/sparkengine/scene"
 )
 
@@ -51,19 +50,38 @@ func (b *Ball) GetPixels() []scene.Pixel {
 	return ballPixels
 }
 
-func (b *Ball) Move(ticks int) {
-	for ti := 0; ti < ticks; ti++ {
-		xPot := int(b.xpos + b.xvel)
-		if xPot < 0 || xPot+b.GetXsize() >= conf.SWIDTH {
-			b.xvel *= -1
-		}
+func (b *Ball) MoveTo(x float64, y float64) {
+	b.xpos = x
+	b.ypos = y
+}
 
-		yPot := int(b.ypos + b.yvel)
-		if yPot < 0 || yPot+b.GetYsize() >= conf.SHEIGHT {
-			b.yvel *= -1
-		}
+func (b *Ball) MoveBy(x float64, y float64) {
+	b.xpos += x
+	b.ypos += y
+}
 
-		b.xpos += b.xvel
-		b.ypos += b.yvel
-	}
+func (b *Ball) Move() {
+	b.xpos += b.xvel
+	b.ypos += b.yvel
+}
+
+func (b *Ball) GetPos() (float64, float64) {
+	return b.xpos, b.ypos
+}
+
+func (b *Ball) GetVel() (float64, float64) {
+	return b.xvel, b.yvel
+}
+
+func (b *Ball) SetXVel(xvel float64) {
+	b.xvel = xvel
+}
+
+func (b *Ball) SetYVel(yvel float64) {
+	b.yvel = yvel
+}
+
+func (b *Ball) BounceX(yvel float64) {
+	b.xvel *= -1
+	b.yvel = yvel
 }

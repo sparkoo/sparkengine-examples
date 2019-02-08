@@ -51,20 +51,30 @@ func (p *Player) GetPixels() []scene.Pixel {
 	return playerPixels
 }
 
-func (p *Player) Move(sHeight int32) {
-	ynew := p.ypos + float64(sHeight)
+func (p *Player) Move(y float64) {
+	ynew := p.ypos + y
 	if ynew < 0 {
-		p.ypos = 0
+		p.MoveTo(p.xpos, 0)
 	} else if ynew + playerLength > conf.SHEIGHT {
-		p.ypos = conf.SHEIGHT - playerLength
+		p.MoveTo(p.xpos, conf.SHEIGHT - playerLength)
 	} else {
-		p.ypos = ynew
+		p.MoveTo(p.xpos, ynew)
 	}
+}
+
+func (p *Player) MoveBy(x float64, y float64) {
+	p.xpos += x
+	p.ypos += y
+}
+
+func (p *Player) MoveTo(x float64, y float64) {
+	p.xpos = x
+	p.ypos = y
 }
 
 func (p *Player) PlayerMoveEvent(event sdl.Event) {
 	switch e := event.(type) {
 	case *sdl.MouseMotionEvent:
-		p.Move(e.YRel)
+		p.Move(float64(e.YRel))
 	}
 }
