@@ -5,14 +5,13 @@ import (
 )
 
 type Ball struct {
-	xpos float64
-	ypos float64
+	*scene.Base
 	xvel float64
 	yvel float64
 }
 
 func NewBall(xpos float64, ypos float64, xvel float64, yvel float64) *Ball {
-	return &Ball{xpos, ypos, xvel, yvel}
+	return &Ball{scene.NewBase(xpos, ypos, size, size), xvel, yvel}
 }
 
 const size = 5
@@ -30,43 +29,12 @@ func init() {
 	}
 }
 
-func (b *Ball) GetXoffset() int {
-	return int(b.xpos)
-}
-
-func (b *Ball) GetYoffset() int {
-	return int(b.ypos)
-}
-
-func (b *Ball) GetXsize() int {
-	return size
-}
-
-func (b *Ball) GetYsize() int {
-	return size
-}
-
 func (b *Ball) GetPixels() []scene.Pixel {
 	return ballPixels
 }
 
-func (b *Ball) MoveTo(x float64, y float64) {
-	b.xpos = x
-	b.ypos = y
-}
-
-func (b *Ball) MoveBy(x float64, y float64) {
-	b.xpos += x
-	b.ypos += y
-}
-
 func (b *Ball) Move() {
-	b.xpos += b.xvel
-	b.ypos += b.yvel
-}
-
-func (b *Ball) GetPos() (float64, float64) {
-	return b.xpos, b.ypos
+	b.Base.MoveBy(b.xvel, b.yvel)
 }
 
 func (b *Ball) GetVel() (float64, float64) {

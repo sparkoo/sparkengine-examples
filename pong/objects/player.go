@@ -7,12 +7,11 @@ import (
 )
 
 type Player struct {
-	xpos float64
-	ypos float64
+	*scene.Base
 }
 
 func NewPlayer(xpos float64, ypos float64) *Player {
-	return &Player{xpos, ypos}
+	return &Player{Base: scene.NewBase(xpos, ypos, playerWidth, playerLength)}
 }
 
 const playerWidth = 5
@@ -31,45 +30,20 @@ func init() {
 	}
 }
 
-func (p *Player) GetXoffset() int {
-	return int(p.xpos)
-}
-
-func (p *Player) GetYoffset() int {
-	return int(p.ypos)
-}
-
-func (p *Player) GetXsize() int {
-	return playerWidth
-}
-
-func (p *Player) GetYsize() int {
-	return playerLength
-}
-
 func (p *Player) GetPixels() []scene.Pixel {
 	return playerPixels
 }
 
 func (p *Player) Move(y float64) {
-	ynew := p.ypos + y
+	xpos, ypos := p.Base.GetPos()
+	ynew := ypos + y
 	if ynew < 0 {
-		p.MoveTo(p.xpos, 0)
-	} else if ynew + playerLength > conf.SHEIGHT {
-		p.MoveTo(p.xpos, conf.SHEIGHT - playerLength)
+		p.Base.MoveTo(xpos, 0)
+	} else if ynew+playerLength > conf.SHEIGHT {
+		p.Base.MoveTo(xpos, conf.SHEIGHT-playerLength)
 	} else {
-		p.MoveTo(p.xpos, ynew)
+		p.Base.MoveTo(xpos, ynew)
 	}
-}
-
-func (p *Player) MoveBy(x float64, y float64) {
-	p.xpos += x
-	p.ypos += y
-}
-
-func (p *Player) MoveTo(x float64, y float64) {
-	p.xpos = x
-	p.ypos = y
 }
 
 func (p *Player) PlayerMoveEvent(event sdl.Event) {
