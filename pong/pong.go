@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/sparkoo/pong/conf"
-	"github.com/sparkoo/pong/objects"
+	"github.com/sparkoo/sparkengine-examples/pong/conf"
+	"github.com/sparkoo/sparkengine-examples/pong/objects"
 	"github.com/sparkoo/sparkengine/core"
 	"github.com/sparkoo/sparkengine/scene"
 	"github.com/veandco/go-sdl2/sdl"
