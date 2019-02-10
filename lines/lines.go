@@ -29,24 +29,17 @@ func init() {
 
 	rand.Seed(time.Now().UnixNano())
 
-	l1 := line.NewLine(MIDX, MIDY, MIDX+100, MIDY+100, scene.RandomColor(255))
-	l2 := line.NewLine(MIDX, MIDY, MIDX+100, MIDY-100, scene.RandomColor(255))
-	l3 := line.NewLine(MIDX, MIDY, MIDX+100, MIDY, scene.RandomColor(255))
-	l4 := line.NewLine(MIDX, MIDY, MIDX, MIDY-100, scene.RandomColor(255))
-	l5 := line.NewLine(MIDX, MIDY, MIDX, MIDY+100, scene.RandomColor(255))
-	l6 := line.NewLine(MIDX, MIDY, MIDX-100, MIDY-100, scene.RandomColor(255))
-	l7 := line.NewLine(MIDX, MIDY, MIDX-100, MIDY, scene.RandomColor(255))
-	l8 := line.NewLine(MIDX, MIDY, MIDX-100, MIDY+100, scene.RandomColor(255))
-
-	s.AddObjects(
-		l1,
-		l2,
-		l3,
-		l4,
-		l5,
-		l6,
-		l7,
-		l8)
+	//for y := 0; y < HEIGHT; y += 20 {
+	//	s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, float64(y), scene.RandomColor(255)))
+	//}
+	s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, MIDY+100, scene.RandomColor(255)))
+	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, MIDY-100, scene.RandomColor(255)))
+	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, MIDY, scene.RandomColor(255)))
+	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX, MIDY-100, scene.RandomColor(255)))
+	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX, MIDY+100, scene.RandomColor(255)))
+	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY-100, scene.RandomColor(255)))
+	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY, scene.RandomColor(255)))
+	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY+100, scene.RandomColor(255)))
 }
 
 func main() {
