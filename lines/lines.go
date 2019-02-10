@@ -33,13 +33,13 @@ func init() {
 	//	s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, float64(y), scene.RandomColor(255)))
 	//}
 	s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, MIDY+100, scene.RandomColor(255)))
-	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, MIDY-100, scene.RandomColor(255)))
-	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, MIDY, scene.RandomColor(255)))
-	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX, MIDY-100, scene.RandomColor(255)))
-	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX, MIDY+100, scene.RandomColor(255)))
-	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY-100, scene.RandomColor(255)))
-	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY, scene.RandomColor(255)))
-	//s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY+100, scene.RandomColor(255)))
+	s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, MIDY-100, scene.RandomColor(255)))
+	s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, MIDY, scene.RandomColor(255)))
+	s.AddObject(line.NewLine(MIDX, MIDY, MIDX, MIDY-100, scene.RandomColor(255)))
+	s.AddObject(line.NewLine(MIDX, MIDY, MIDX, MIDY+100, scene.RandomColor(255)))
+	s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY-100, scene.RandomColor(255)))
+	s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY, scene.RandomColor(255)))
+	s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, MIDY+100, scene.RandomColor(255)))
 }
 
 func main() {
