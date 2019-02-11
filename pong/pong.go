@@ -26,8 +26,8 @@ func main() {
 	s.AddObject(player2)
 	s.AddObject(ball)
 
-	s.AddEventListener(sdl.MOUSEMOTION, player1.PlayerMoveEvent)
-	s.AddEventListener(sdl.MOUSEBUTTONDOWN, startGame)
+	s.AddEventListener(player1.PlayerMoveEvent)
+	s.AddEventListener(startGame)
 
 	game.Start(s)
 }
@@ -48,8 +48,13 @@ func tick() {
 	}
 }
 
-func startGame(_ sdl.Event) {
-	running = true
+func startGame(event sdl.Event) {
+	switch t := event.(type) {
+	case *sdl.MouseButtonEvent:
+		if t.State == 1{
+			running = true
+		}
+	}
 }
 
 func playerAi(b *objects.Ball, p *objects.Player) {

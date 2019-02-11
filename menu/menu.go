@@ -34,17 +34,17 @@ func init() {
 
 	menu1.AddObjects(elM1...)
 	menu1.AddObject(cursorM1)
-	menu1.AddEventListener(sdl.KEYDOWN, func(event sdl.Event) {
+	menu1.AddEventListener(func(event sdl.Event) {
 		menuMoveEvent(cursorM1, event)
 	})
-	menu1.AddEventListener(sdl.KEYDOWN, menu1Enter)
+	menu1.AddEventListener(menu1Enter)
 
 	menu2.AddObjects(elM2...)
 	menu2.AddObject(cursorM2)
-	menu2.AddEventListener(sdl.KEYDOWN, func(event sdl.Event) {
+	menu2.AddEventListener(func(event sdl.Event) {
 		menuMoveEvent(cursorM2, event)
 	})
-	menu2.AddEventListener(sdl.KEYDOWN, menu2Enter)
+	menu2.AddEventListener(menu2Enter)
 }
 
 func main() {
@@ -54,9 +54,9 @@ func main() {
 func menuMoveEvent(c *objects.Cursor, event sdl.Event) {
 	switch t := event.(type) {
 	case *sdl.KeyboardEvent:
-		if t.Keysym.Scancode == 82 { // up
+		if t.Keysym.Scancode == 82 && t.State == 1 { // up
 			moveCursor(c, -1)
-		} else if t.Keysym.Scancode == 81 { // down
+		} else if t.Keysym.Scancode == 81 && t.State == 1 { // down
 			moveCursor(c, 1)
 		}
 	}
@@ -76,7 +76,7 @@ func moveCursor(c *objects.Cursor, diff int) {
 func menu1Enter(event sdl.Event) {
 	switch t := event.(type) {
 	case *sdl.KeyboardEvent:
-		if t.Keysym.Scancode == 40 { // enter
+		if t.Keysym.Scancode == 40 && t.State == 1 { // enter
 			if cursorM1.Pos >= len(elM1)-1 {
 				game.Quit()
 			} else if cursorM1.Pos == 0 {
@@ -89,7 +89,7 @@ func menu1Enter(event sdl.Event) {
 func menu2Enter(event sdl.Event) {
 	switch t := event.(type) {
 	case *sdl.KeyboardEvent:
-		if t.Keysym.Scancode == 40 { // enter
+		if t.Keysym.Scancode == 40 && t.State == 1{ // enter
 			log.Println(cursorM2.Pos, cursorM2.Fields)
 			if cursorM2.Pos >= cursorM2.Fields-1 {
 				game.SwitchScene(menu1)
