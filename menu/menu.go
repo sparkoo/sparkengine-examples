@@ -26,8 +26,8 @@ var elM2 = []scene.Object{
 var cursorM1 = objects.NewCursor(0, len(elM1))
 var cursorM2 = objects.NewCursor(0, len(elM2))
 
-var menu1 = scene.NewScene(func() {})
-var menu2 = scene.NewScene(func() {})
+var menu1 = scene.NewScene(scene.NoopTick)
+var menu2 = scene.NewScene(scene.NoopTick)
 
 func init() {
 	game = core.NewGame(core.NewConf(conf.FPS, conf.FPS*2, conf.SWIDTH, conf.SHEIGHT))
@@ -80,7 +80,7 @@ func menu1Enter(event sdl.Event) {
 			if cursorM1.Pos >= len(elM1)-1 {
 				game.Quit()
 			} else if cursorM1.Pos == 0 {
-				game.SwitchScene(menu2)
+				game.SwitchScene(menu2, false)
 			}
 		}
 	}
@@ -92,7 +92,7 @@ func menu2Enter(event sdl.Event) {
 		if t.Keysym.Scancode == 40 && t.State == 1{ // enter
 			log.Println(cursorM2.Pos, cursorM2.Fields)
 			if cursorM2.Pos >= cursorM2.Fields-1 {
-				game.SwitchScene(menu1)
+				game.SwitchScene(menu1, false)
 			}
 		}
 	}

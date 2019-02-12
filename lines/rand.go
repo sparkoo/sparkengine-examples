@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/sparkoo/sparkengine/core"
 	"github.com/sparkoo/sparkengine/scene"
-	"github.com/sparkoo/sparkengine/scene/olib/line"
+	"github.com/sparkoo/sparkengine/scene/olib/shape"
 	"math/rand"
 	"time"
 )
@@ -30,8 +30,8 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-func addRandomLineTick() {
-	s.AddObject(line.NewLine(
+func addRandomLineTick(_ int64, _ int64) {
+	s.AddObject(shape.NewLine(
 		rand.Float64()*WIDTH,
 		rand.Float64()*HEIGHT,
 		rand.Float64()*WIDTH,

@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/sparkoo/sparkengine/core"
 	"github.com/sparkoo/sparkengine/scene"
-	"github.com/sparkoo/sparkengine/scene/olib/line"
+	"github.com/sparkoo/sparkengine/scene/olib/shape"
 	"math/rand"
 	"time"
 )
@@ -34,22 +34,22 @@ func init() {
 
 	// right
 	for y := int(MIDY - 100); y < int(MIDY + 100); y += 10 {
-		s.AddObject(line.NewLine(MIDX, MIDY, MIDX+100, float64(y), scene.RandomColor(255)))
+		s.AddObject(shape.NewLine(MIDX, MIDY, MIDX+100, float64(y), scene.RandomColor(255)))
 	}
 
 	// left
 	for y := int(MIDY - 100); y < int(MIDY + 100); y += 10 {
-		s.AddObject(line.NewLine(MIDX, MIDY, MIDX-100, float64(y), scene.RandomColor(255)))
+		s.AddObject(shape.NewLine(MIDX, MIDY, MIDX-100, float64(y), scene.RandomColor(255)))
 	}
 
 	// top
 	for x := int(MIDX - 100); x < int(MIDX + 100); x += 10 {
-		s.AddObject(line.NewLine(MIDX, MIDY, float64(x), MIDY-100, scene.RandomColor(255)))
+		s.AddObject(shape.NewLine(MIDX, MIDY, float64(x), MIDY-100, scene.RandomColor(255)))
 	}
 
 	// bottom
 	for x := int(MIDX - 100); x < int(MIDX + 100); x += 10 {
-		s.AddObject(line.NewLine(MIDX, MIDY, float64(x), MIDY+100, scene.RandomColor(255)))
+		s.AddObject(shape.NewLine(MIDX, MIDY, float64(x), MIDY+100, scene.RandomColor(255)))
 	}
 }
 

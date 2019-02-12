@@ -32,7 +32,7 @@ func main() {
 	game.Start(s)
 }
 
-func tick() {
+func tick(_ int64, _ int64) {
 	if !running {
 		return
 	}
@@ -51,14 +51,14 @@ func tick() {
 func startGame(event sdl.Event) {
 	switch t := event.(type) {
 	case *sdl.MouseButtonEvent:
-		if t.State == 1{
+		if t.State == 1 {
 			running = true
 		}
 	}
 }
 
 func playerAi(b *objects.Ball, p *objects.Player) {
-	if b.GetYoffset() > p.GetYoffset() + (p.GetYsize() / 2) {
+	if b.GetYoffset() > p.GetYoffset()+(p.GetYsize()/2) {
 		p.Move(rand.Float64() * 5)
 	} else {
 		p.Move(rand.Float64() * -5)
