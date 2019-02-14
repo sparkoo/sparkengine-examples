@@ -2,7 +2,7 @@ package objects
 
 import (
 	"github.com/sparkoo/sparkengine-examples/menu/conf"
-	"github.com/sparkoo/sparkengine/scene"
+	"github.com/sparkoo/sparkengine/core/scene"
 )
 
 var cursorPixels []scene.Pixel

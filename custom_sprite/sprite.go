@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/sparkoo/sparkengine/core"
-	"github.com/sparkoo/sparkengine/scene"
-	"github.com/sparkoo/sparkengine/scene/olib/sprite"
+	"github.com/sparkoo/sparkengine/core/scene"
+	"github.com/sparkoo/sparkengine/core/scene/olib/sprite"
 )
 
 func main() {

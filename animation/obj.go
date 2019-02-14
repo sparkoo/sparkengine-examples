@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/sparkoo/sparkengine/scene"
-	"github.com/sparkoo/sparkengine/scene/image"
+	"github.com/sparkoo/sparkengine/core/scene"
+	"github.com/sparkoo/sparkengine/core/scene/image"
 )
 
 var animationPixels [8][]scene.Pixel

@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/sparkoo/sparkengine/core"
-	"github.com/sparkoo/sparkengine/scene"
+	"github.com/sparkoo/sparkengine/core/scene"
 )
 
 func main() {

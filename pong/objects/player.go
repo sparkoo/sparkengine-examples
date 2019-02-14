@@ -2,7 +2,7 @@ package objects
 
 import (
 	"github.com/sparkoo/sparkengine-examples/pong/conf"
-	"github.com/sparkoo/sparkengine/scene"
+	"github.com/sparkoo/sparkengine/core/scene"
 	"github.com/veandco/go-sdl2/sdl"
 )
 

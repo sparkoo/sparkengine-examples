@@ -1,7 +1,7 @@
 package objects
 
 import (
-	"github.com/sparkoo/sparkengine/scene"
+	"github.com/sparkoo/sparkengine/core/scene"
 )
 
 type Ball struct {
