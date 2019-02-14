@@ -5,6 +5,7 @@ import (
 	"github.com/sparkoo/sparkengine/core/scene"
 	"github.com/sparkoo/sparkengine/core/scene/image"
 	"github.com/sparkoo/sparkengine/core/scene/olib/sprite"
+	"github.com/veandco/go-sdl2/sdl"
 )
 
 func main() {
@@ -18,6 +19,23 @@ func main() {
 	s := scene.NewScene(func(gameTickCounter int64, sceneTickCounter int64) {
 		if gameTickCounter%3 == 0 {
 			character.Tick()
+		}
+	})
+
+	s.AddEventListener(func(event sdl.Event) {
+		switch e := event.(type) {
+		case *sdl.KeyboardEvent:
+			//log.Println(e.Keysym.Scancode)
+			if e.Keysym.Scancode == 79 && e.State == 1 {
+				character.ChangeAction(RUN)
+			} else if e.Keysym.Scancode == 79 && e.State == 0 {
+				character.ChangeAction(IDLE)
+			}
+			if e.Keysym.Scancode == 224 && e.State == 1 {
+				character.ChangeAction(ATTACK_1)
+			} else if e.Keysym.Scancode == 224 && e.State == 0 {
+				character.ChangeAction(IDLE)
+			}
 		}
 	})
 
