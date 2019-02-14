@@ -36,7 +36,7 @@ func init() {
 	// load idle
 	pixels[IDLE] = make([][]scene.Pixel, frameCounts[IDLE])
 	for i := 0; i < frameCounts[IDLE]; i++ {
-		pixels[IDLE][i] = image.LoadImage(fmt.Sprintf("assets/Idle/%02d.png", i), 0, 0, SPRITE_WIDTH, SPRITE_HEIGHT)
+		pixels[IDLE][i] = image.LoadFullImage(fmt.Sprintf("assets/Idle/%02d.png", i))
 	}
 }
 

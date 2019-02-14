@@ -12,7 +12,7 @@ func main() {
 
 	character := NewCharacter(0, 0)
 	background := sprite.NewSprite(0, 0, 960, 540, func() []scene.Pixel {
-		return image.LoadImage("assets/background.png", 0, 0, 960, 540)
+		return image.LoadFullImage("assets/background.png")
 	})
 
 	s := scene.NewScene(func(gameTickCounter int64, sceneTickCounter int64) {
