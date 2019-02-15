@@ -11,25 +11,26 @@ import (
 func main() {
 	g := core.NewGame(core.NewConf30T960W())
 
-	character := NewCharacter(0, 0)
+	character := NewCharacter(0, 400)
 	background := sprite.NewSprite(0, 0, 960, 540, func() []scene.Pixel {
 		return image.LoadFullImage("assets/background.png")
 	})
 
 	s := scene.NewScene(func(gameTickCounter int64, sceneTickCounter int64) {
-		if gameTickCounter%3 == 0 {
 			character.Tick()
-		}
 	})
 
 	s.AddEventListener(func(event sdl.Event) {
 		switch e := event.(type) {
 		case *sdl.KeyboardEvent:
 			//log.Println(e.Keysym.Scancode)
+
 			if e.Keysym.Scancode == 79 && e.State == 1 {
 				character.ChangeAction(RUN)
+				character.Moving(true)
 			} else if e.Keysym.Scancode == 79 && e.State == 0 {
 				character.ChangeAction(IDLE)
+				character.Moving(false)
 			}
 			if e.Keysym.Scancode == 224 && e.State == 1 {
 				character.ChangeAction(ATTACK_1)
