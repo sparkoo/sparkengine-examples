@@ -1,14 +1,15 @@
 package main
 
 import (
+	"math/rand"
+
 	"github.com/sparkoo/sparkengine/core"
 	"github.com/sparkoo/sparkengine/core/scene"
 	"github.com/sparkoo/sparkengine/core/scene/olib/shape"
-	"math/rand"
 )
 
-const WIDTH = 640
-const HEIGHT = 240
+const screenWidth = 640
+const screenHeight = 480
 
 func main() {
 	g := core.NewGame(core.NewConf30T640W())
@@ -19,13 +20,13 @@ func main() {
 		for _, b := range balls {
 			x, y := b.GetPos()
 
-			xpot := x + b.vx
-			if !(xpot > 0 && (int(xpot)+b.GetXsize()) < WIDTH) {
+			xpot := int(x + b.vx)
+			if xpot < 0 || xpot+b.GetXsize() > screenWidth {
 				b.vx = b.vx * -1
 			}
 
-			ypot := y + b.vy
-			if !(ypot > 0 && (int(ypot)+b.GetYsize()) < HEIGHT) {
+			ypot := int(y + b.vy)
+			if ypot < 0 || ypot+b.GetYsize() > screenHeight {
 				b.vy = b.vy * -1
 			}
 			b.MoveBy(b.vx, b.vy)
