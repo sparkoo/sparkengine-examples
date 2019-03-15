@@ -4,6 +4,7 @@ import (
 	"github.com/sparkoo/sparkengine-examples/menu/conf"
 	"github.com/sparkoo/sparkengine-examples/menu/objects"
 	"github.com/sparkoo/sparkengine/core"
+	"github.com/sparkoo/sparkengine/core/event"
 	"github.com/sparkoo/sparkengine/core/scene"
 	"github.com/veandco/go-sdl2/sdl"
 	"log"
@@ -34,14 +35,14 @@ func init() {
 
 	menu1.AddObjects(elM1...)
 	menu1.AddObject(cursorM1)
-	menu1.AddEventListener(func(event sdl.Event) {
+	menu1.AddEventListener(func(event event.Event) {
 		menuMoveEvent(cursorM1, event)
 	})
 	menu1.AddEventListener(menu1Enter)
 
 	menu2.AddObjects(elM2...)
 	menu2.AddObject(cursorM2)
-	menu2.AddEventListener(func(event sdl.Event) {
+	menu2.AddEventListener(func(event event.Event) {
 		menuMoveEvent(cursorM2, event)
 	})
 	menu2.AddEventListener(menu2Enter)
@@ -51,7 +52,7 @@ func main() {
 	game.Start(menu1)
 }
 
-func menuMoveEvent(c *objects.Cursor, event sdl.Event) {
+func menuMoveEvent(c *objects.Cursor, event event.Event) {
 	switch t := event.(type) {
 	case *sdl.KeyboardEvent:
 		if t.Keysym.Scancode == 82 && t.State == 1 { // up
@@ -73,10 +74,10 @@ func moveCursor(c *objects.Cursor, diff int) {
 	c.MoveToPos(c.Pos)
 }
 
-func menu1Enter(event sdl.Event) {
-	switch t := event.(type) {
-	case *sdl.KeyboardEvent:
-		if t.Keysym.Scancode == 40 && t.State == 1 { // enter
+func menu1Enter(e event.Event) {
+	switch t := e.(type) {
+	case *event.KeyboardEvent:
+		if t.GetKey().GetKeycode() == 40 && t.GetState() == 1 { // enter
 			if cursorM1.Pos >= len(elM1)-1 {
 				game.Quit()
 			} else if cursorM1.Pos == 0 {
@@ -86,10 +87,10 @@ func menu1Enter(event sdl.Event) {
 	}
 }
 
-func menu2Enter(event sdl.Event) {
+func menu2Enter(event event.Event) {
 	switch t := event.(type) {
 	case *sdl.KeyboardEvent:
-		if t.Keysym.Scancode == 40 && t.State == 1{ // enter
+		if t.Keysym.Scancode == 40 && t.State == 1 { // enter
 			log.Println(cursorM2.Pos, cursorM2.Fields)
 			if cursorM2.Pos >= cursorM2.Fields-1 {
 				game.SwitchScene(menu1, false)
