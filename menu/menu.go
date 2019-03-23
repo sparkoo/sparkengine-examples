@@ -52,12 +52,13 @@ func main() {
 	game.Start(menu1)
 }
 
-func menuMoveEvent(c *objects.Cursor, event event.Event) {
-	switch t := event.(type) {
-	case *sdl.KeyboardEvent:
-		if t.Keysym.Scancode == 82 && t.State == 1 { // up
+func menuMoveEvent(c *objects.Cursor, e event.Event) {
+	log.Println("key pressed", e)
+	switch t := e.(type) {
+	case *event.KeyboardEvent:
+		if t.GetKey().GetKeycode() == 82 && t.GetState() == event.PRESSED { // up
 			moveCursor(c, -1)
-		} else if t.Keysym.Scancode == 81 && t.State == 1 { // down
+		} else if t.GetKey().GetKeycode() == 81 && t.GetState() == event.RELEASED { // down
 			moveCursor(c, 1)
 		}
 	}
